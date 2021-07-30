@@ -1,0 +1,48 @@
+<div class="card">
+    <div class="card-header">
+        All users
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <table class="table table-hover table-responsive-lg">
+                <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">First name</th>
+                    <th scope="col">Last name</th>
+                    <th scope="col">Age</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Role</th>
+                    <th scope="col">Edit</th>
+                    <th scope="col">Delete</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="user : ${users}">
+                    <td th:text="${user.getId()}">id</td>
+                    <td th:text="${user.getFirstName()}">first_name</td>
+                    <td th:text="${user.getLastName()}">last_name</td>
+                    <td th:text="${user.getAge()}">age</td>
+                    <td th:text="${user.getEmail()}">email</td>
+                    <td>
+                        <span th:each="role : ${user.getAuthorities()}">
+                            <span th:utext="${role.getAuthority()}"></span>
+                       </span>
+                    </td>
+                    <td><a class="btn btn-info edit-Detail"
+                           th:href="@{/admin/users/{id}/edit(id=${user.getId()})}">
+                        Edit
+                    </a></td>
+                    <td>
+
+                        <a class="btn btn-danger delete-Detail"
+                           th:href="@{/admin/users/{id}/delete(id=${user.getId()})}">
+                            Delete
+                        </a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

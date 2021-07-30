@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+
+<th:block th:include="fragments/header"></th:block>
+
+<body>
+
+<th:block th:include="fragments/navbar"></th:block>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-2 d-none d-md-block bg-white sidebar ">
+            <div class="nav flex-column nav-pills " id="v-pills-tab" role="tablist" aria-orientation="vertical">
+
+                <a sec:authorize="hasAuthority('ADMIN')" class="nav-link active" id="v-pills-home-tab"
+                   data-toggle="pill" href="#v-pills-home" role="tab"
+                   aria-controls="v-pills-home" aria-selected="false">Admin</a>
+
+                <a class="nav-link"
+                   id="v-pills-profile-tab" data-toggle="pill"
+                   href="#v-pills-profile" role="tab"
+                   aria-controls="v-pills-profile" aria-selected="false">User</a>
+            </div>
+        </div>
+
+        <main role="main" class="col-md-10  col-lg-10 pt-3 px-4 bg-light">
+            <div class="col-10">
+                <div class="tab-content " id="v-pills-tabContent">
+                    <div sec:authorize="hasAuthority('ADMIN')" class="tab-pane fade show active" id="v-pills-home"
+                         role="tabpanel"
+                         aria-labelledby="v-pills-home-tab">
+
+                        <div class="container">
+                            <h1>Admin panel</h1>
+                            <nav>
+                                <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                                    <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab"
+                                       href="#nav-home"
+                                       role="tab"
+                                       aria-controls="nav-home" aria-selected="true">Users Table</a>
+                                    <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab"
+                                       href="#nav-profile"
+                                       role="tab"
+                                       aria-controls="nav-profile" aria-selected="false">New User</a>
+                                </div>
+                            </nav>
+
+                            <div class="tab-content" id="nav-tabContent">
+                                <div class="tab-pane fade show active" id="nav-home" role="tabpanel"
+                                     aria-labelledby="nav-home-tab">
+                                    <th:block th:include="fragments/users_page"></th:block>
+                                </div>
+
+                                <div class="tab-pane fade" id="nav-profile" role="tabpanel"
+                                     aria-labelledby="nav-profile-tab">
+                                    <th:block th:include="fragments/create_user_page"></th:block>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="tab-pane fade" id="v-pills-profile" role="tabpanel"
+                         aria-labelledby="v-pills-profile-tab">
+                        <th:block th:include="fragments/user_info_page"></th:block>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+</div>
+</div>
+
+<th:block th:include="fragments/modals/modal_template"></th:block>
+<th:block th:include="fragments/scripts"></th:block>
+</body>
+
+</html>

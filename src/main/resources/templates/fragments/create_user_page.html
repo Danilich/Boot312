@@ -1,0 +1,57 @@
+<div class="card">
+  <div class="card-header">
+    Add new user
+  </div>
+
+  <div class="card-body">
+    <div class="row justify-content-center align-items-center">
+
+      <form class="text-center" th:method="POST" th:action="@{/admin}"
+            th:object="${user}">
+
+        <div class="form-group font-weight-bold">
+          <label for="firstName">First name</label>
+          <input required class="form-control" id="firstName"
+                 placeholder="First Name" type="text"
+                 th:field="*{firstName}"/>
+
+
+          <label for="lastName">Last name</label>
+          <input required class="form-control" id="lastName"
+                 placeholder="Last name" type="text"
+                 th:field="*{lastName}"/>
+
+
+          <label for="age">Age</label>
+          <input required class="form-control" id="age"
+                 placeholder="Last name" type="text"
+                 th:field="*{age}"/>
+
+
+          <label for="email">Email</label>
+          <input required class="form-control" id="email"
+                 placeholder="Email" type="text"
+                 th:field="*{email}"/>
+
+
+          <label for="password">Password</label>
+          <input required class="form-control" id="password"
+                 placeholder="Password" type="password"
+                 th:field="*{password}"/>
+
+
+          <label for="multiSelect">Role</label>
+          <select required class="form-control" multiple
+                  name="role_select"
+                  id="multiSelect" size="2">
+            <option th:each="role : ${roles}"
+                    th:value="${role.getId()}"
+                    th:text="${role.getAuthority()}"></option>
+          </select>
+        </div>
+        <button type="submit" class="btn btn-success">Add new user</button>
+      </form>
+
+    </div>
+  </div>
+</div>

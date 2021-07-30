@@ -1,0 +1,16 @@
+@charset "UTF-8";
+
+
+
+
+.sidebar{
+	padding-left: 0;
+	padding-right: 0;
+	padding-top: 20px;
+	min-height: calc(100vh - 50px);
+
+}
+
+
+
+
